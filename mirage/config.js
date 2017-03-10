@@ -58,11 +58,11 @@ export default function() {
   this.delete('api/competencies/:id', 'competency');
   this.post('api/competencies', 'competency');
 
-  this.get('api/courseclerkshiptypes', getAll);
-  this.get('api/courseclerkshiptypes/:id', 'courseClerkshipType');
-  this.put('api/courseclerkshiptypes/:id', 'courseClerkshipType');
-  this.delete('api/courseclerkshiptypes/:id', 'courseClerkshipType');
-  this.post('api/courseclerkshiptypes', 'courseClerkshipType');
+  this.get('api/courseclerkshiptypes', course-clerkship-type.getAll);
+  this.get('api/courseclerkshiptypes/:id');
+  this.put('api/courseclerkshiptypes/:id');
+  this.delete('api/courseclerkshiptypes/:id');
+  this.post('api/courseclerkshiptypes');
 
   this.get('api/courselearningmaterials', getAll);
   this.get('api/courselearningmaterials/:id', 'courseLearningMaterial');
@@ -323,7 +323,10 @@ export default function() {
   this.delete('api/userroles/:id', 'userRole');
   this.post('api/userroles', 'userRole');
 
-  this.get('api/users', getAll);
+  this.get('/users', (schema) => {
+    return schema.users.all();
+  });
+  
   this.get('api/users/:id');
   this.put('api/users/:id');
   this.del('api/users/:id');
